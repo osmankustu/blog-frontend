@@ -4,13 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "build": "ng build ",
+    "watch": "ng build --watch  --configuration development",
+    "test": "ng test",
+    "build-pord":"ng build --configuration production"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^14.2.0",
+    "@angular/animations": "^14.2.8",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
     "@angular/core": "^14.2.0",
@@ -18,6 +19,12 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.2",
+    "jquery": "^3.6.1",
+    "ngx-toastr": "^15.2.1",
+    "popper": "^1.0.1",
+    "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

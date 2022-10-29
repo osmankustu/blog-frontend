@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Category } from '../Models/category';
 import { ListResponseModel } from '../Models/listResponseModel';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { ListResponseModel } from '../Models/listResponseModel';
 })
 export class CategoryService {
 
-  apiUrl = 'https://localhost:44314/api/categories/getall';
+  apiUrl = 'https://localhost:44335/api/Category/GetAll';
 
   constructor(private httpClient: HttpClient) { }
 
