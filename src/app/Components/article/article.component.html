@@ -1,39 +1,33 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
+<div *ngIf="dataLoaded==false"class="center">
+  <Span class="the">The</Span>
+  <br>
+  <Span class="dev">Dev</Span>
+  <br>
+  <Span class="blog">Blog</Span>
+  <br>
+  <br>
+  <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
   
   <div class="mb-3">
-    <label for="filterText" class="form-label">Ürün ara</label>
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" 
+    <label for="filterText" class="form-label">Makale Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" *ngIf="dataLoaded==true"
     placeholder="arama ifadesi giriniz">
   </div>
   <div *ngIf="filterText.length>2" class="alert alert-success">
     {{filterText}} aradınız.
   </div>
+  <div  *ngFor="let article of articles | filterPipe:filterText">
+  <div *ngIf="dataLoaded == true" class="card " style="width: 60rem; margin-top: 10px;">
+    <img src="{{article.articleImage}}" class="card-img-top" alt="*" width="600" height="400">
+    <div class="card-body">
+    <h5 class="card-title">{{article.articleTitle}}</h5>
+    <p class="card-text">{{article.articleSummary}}</p>
+    <p class="card-date">{{article.articleDate | date}}</p>
+    <a href="#" (click)="getArticleDetails(article.articleId)" routerLink="/articles/articledetails/{{article.articleId}}" class="btn btn-primary">Okumaya Başla</a>
+    </div>
+  </div>
   
-  <table *ngIf="dataLoaded==true" class="table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Ürün adı</th>
-        <th>Kategori</th>
-        <th>Fiyat</th>
-        <th>Kdv'li Fiyat</th>
-        <th>Stok Adedi</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let article of articles | filterPipe:filterText">
-        <td>{{ article.articleId }}</td>
-        <td>{{ article.articleTitle }}</td>
-        <td>{{ article.categoryId }}</td>
-        <td>{{ article.articleSummary }}</td>
-        <td>{{ article.articleContent  }}</td>
-        <td>{{ article.articleDate |date}}</td>
-         
-         <td> <button type="button" class="btn btn-success">Okumaya Devam Et</button></td>
-      </tr>
-    </tbody>
-    
-  </table>
+  

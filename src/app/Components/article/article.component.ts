@@ -12,6 +12,7 @@ import { ArticleService } from 'src/app/Services/article.service';
 export class ArticleComponent implements OnInit {
 
   articles: Article[] = [];
+  article:Article
   dataLoaded = false;
   filterText="";
   
@@ -20,7 +21,15 @@ export class ArticleComponent implements OnInit {
     private toastrService:ToastrService,) {}
 
   ngOnInit(): void {
-      this.activatedRoute.params.subscribe(params=>{
+    this.activatedRoute.params.subscribe(params =>{
+      if(params["articleId"]){
+        this.getArticleDetails(params["articleId"]);
+      }else{
+        this.getProducts();
+      }
+    }) 
+    
+    this.activatedRoute.params.subscribe(params=>{
         if(params["categoryId"]){
           this.getProductsByCategory(params["categoryId"])
         }else{
@@ -35,12 +44,20 @@ export class ArticleComponent implements OnInit {
       this.dataLoaded = true;
     })   
   }
-
+  
   getProductsByCategory(categoryId:number) {
     this.articleService.getProductsByCategory(categoryId).subscribe(response=>{
       this.articles = response.data
       this.dataLoaded = true;
     })   
+  }
+
+  getArticleDetails(articleId:number){
+    this.articleService.getArticleByArticleId(articleId).subscribe(response =>{
+      this.article = response.data;
+      console.log(this.article)
+      this.dataLoaded = true;
+    })
   }
 
   // addToCart(article:Article){
