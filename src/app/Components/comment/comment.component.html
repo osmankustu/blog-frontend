@@ -1,0 +1,25 @@
+<div class="content mx-12" >
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Yorum yap</h5></div>
+            <div class="card-body">
+                <form [formGroup]="commentForm">
+                    <div class="mb-3">
+                        <label for="articleComment">Yorumunuz</label>
+                        <div class="form-group">
+                            <input type="text" 
+                            id="articleComment" 
+                            formControlName="articleComment" class="form-control" 
+                            placeholder="Makaleniz çok güzel"/>
+                        </div>
+                    </div>   
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="add()">Yorum Ekle</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
